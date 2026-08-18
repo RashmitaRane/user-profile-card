@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Profiles</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="page-transition"> 
+
+    <!-- Falling Leaves Background -->
+    <div class="leaves-container">
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+    </div>
+
+    <div class="profiles-page-container">
+        
+        <div class="header-actions">
+            <h1 class="page-title">All Generated Profiles</h1>
+            <a href="/" class="back-button">⬅️ Create Another</a>
+        </div>
+
+        <!-- Grid to hold all cards side-by-side -->
+        <div class="cards-grid">
+            <% if (profiles.length > 0) { %>
+                <% profiles.forEach(function(profile) { %>
+                    <div class="profile-card">
+                        
+                        <div class="avatar">
+                            <%= profile.name.charAt(0).toUpperCase() %>
+                        </div>
+                        
+                        <h1><%= profile.name %></h1>
+                        <p class="bio"><%= profile.bio %></p>
+                        
+                        <h3>Skills</h3>
+                        <div class="skills">
+                            <% profile.skills.split(",").forEach(function(skill) { %>
+                                <span class="skill"><%= skill.trim() %></span>
+                            <% }); %>
+                        </div>
+                        
+                        <div class="social-links">
+                            <% if (profile.github) { %>
+                                <a href="<%= profile.github %>" target="_blank">GitHub</a>
+                            <% } %>
+                            <% if (profile.linkedin) { %>
+                                <a href="<%= profile.linkedin %>" target="_blank">LinkedIn</a>
+                            <% } %>
+                        </div>
+
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <h3 style="text-align: center; width: 100%; color: #5c3a21;">No profiles created yet!</h3>
+            <% } %>
+        </div>
+
+    </div>
+
+</body>
+</html>

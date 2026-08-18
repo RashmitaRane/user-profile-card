@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="page-transition"> <!-- Animation Class -->
+
+    <div class="leaves-container">
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div><div class="leaf"></div>
+        <div class="leaf"></div><div class="leaf"></div>
+    </div>
+
+    <div class="main-layout">
+        <div class="content-area">
+            <div class="container">
+                <h1>Create Your Profile</h1>
+                
+                <!-- Notice the ID added here for JS targeting -->
+                <form id="profile-form" action="/create-profile" method="POST">
+                    
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea name="bio" placeholder="Tell something about yourself" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Skills</label>
+                        <input type="text" name="skills" placeholder="Java, Python, HTML, CSS" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>GitHub Profile</label>
+                        <input type="url" name="github" placeholder="https://github.com/username">
+                    </div>
+
+                    <div class="form-group">
+                        <label>LinkedIn Profile</label>
+                        <input type="url" name="linkedin" placeholder="https://linkedin.com/in/username">
+                    </div>
+
+                    <button type="submit">Create Profile</button>
+                    
+                </form>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="/profiles" style="color: #d97706; font-weight: bold; text-decoration: none;">View All Profiles ➡️</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smooth Transition Script -->
+    <script>
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop instant load
+            document.body.classList.add('fade-out'); // Trigger CSS fade
+            
+            // Wait 600ms for animation to finish, then submit
+            setTimeout(() => {
+                this.submit();
+            }, 600);
+        });
+    </script>
+</body>
+</html>
